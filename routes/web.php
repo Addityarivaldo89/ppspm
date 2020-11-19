@@ -20,10 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/upload-ppspm', [App\Http\Controllers\UploadController::class, 'index'])->name('upload');
 Route::get('/verify-view', [App\Http\Controllers\VerifyController::class, 'index'])->name('verify');
 Route::get('view-data', [App\Http\Controllers\AuthorizationController::class, 'viewData']);
 Route::get('create-data', [App\Http\Controllers\AuthorizationController::class, 'createData']);
 Route::get('edit-data', [App\Http\Controllers\AuthorizationController::class, 'editData']);
 Route::get('update-data', [App\Http\Controllers\AuthorizationController::class, 'updateData']);
 Route::get('delete-data', [App\Http\Controllers\AuthorizationController::class, 'deleteData']);
+Route::get('file-upload', [App\Http\Controllers\FileUploadController::class, 'fileUpload' ])->name('file.upload');
+Route::post('file-upload', [App\Http\Controllers\FileUploadController::class, 'fileUploadPost' ])->name('file.upload.post');

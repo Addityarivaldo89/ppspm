@@ -44,6 +44,7 @@
                         @csrf
                         <div class="custom-file">
                             <input type="file" name="file" class="custom-file-input" id="berkas1" required>
+                            <input type="hidden" name="tipe" value="SPM-TIGA">
                             <label class="custom-file-label" for="berkas1">Upload SPP/SPM</label>
                             <div class="invalid-feedback">(*.pdf/Max 5MB)</div>
                         </div>

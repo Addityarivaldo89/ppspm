@@ -28,17 +28,22 @@ class FileUploadController extends Controller
     {
         $request->validate([
             'file' => 'required|file|mimes:jpg,jpeg,bmp,png,doc,docx,csv,rtf,xlsx,xls,txt,pdf,zip',
+            'tipe' => 'required',
         ]);
 
-        $fileName = time() . '.' . $request->file->extension();
+        $fileName = $request->file->getClientOriginalName();
+        $tipe = $request->tipe;
         $request->file->move(public_path('file'), $fileName);
 
         /* Store $fileName name in DATABASE from HERE */
 
-        File::create(['name' => $fileName]);
+        File::create([
+            'name' => $fileName,
+            'tipe' => $tipe
+        ]);
 
         return back()
-            ->with('success', 'You have successfully file uplaod.')
+            ->with('success', 'You have successfully file upload.')
             ->with('file', $fileName);
     }
 

@@ -116,48 +116,25 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if($role == 1)
                             <tr>
                                 <th scope="row">1</th>
-                                @if($role == 1)
                                 <td>Additya</td>
-                                @else
-                                <td>SPM-LS PIHAK KE TIGA</td>
-                                @endif
-                                <td><span class="badge badge-success">Sudah Diproses</span></td>
-                                @if($role == 1)
                                 <td>
                                     <a type="button" href="{{ route('verify') }}" class="btn btn-info btn-circle"><i class="fas fa-eye"></i></a>
                                 </td>
-                                @endif
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                @if($role == 1)
-                                <td>Luthfi</td>
-                                @else
-                                <td>SPM-UP</td>
-                                @endif
-                                <td><span class="badge badge-warning">Belum Diproses</span></td>
-                                @if($role == 1)
-                                <td>
-                                    <a type="button" href="{{ route('verify') }}" class="btn btn-info btn-circle"><i class="fas fa-eye"></i></a>
-                                </td>
-                                @endif
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                @if($role == 1)
-                                <td>Farid</td>
-                                @else
-                                <td>SPM-LS BENDAHARA</td>
-                                @endif
-                                <td><span class="badge badge-success">Sudah Diproses</span></td>
-                                @if($role == 1)
-                                <td>
-                                    <a type="button" href="{{ route('verify') }}" class="btn btn-info btn-circle"><i class="fas fa-eye"></i></a>
-                                </td>
-                                @endif
-                            </tr>
+                            @else
+                                @forelse ($files as $file)
+                                    <tr>
+                                        <th scope="row">{{$loop->iteration}}</th>
+                                        <td>{{ $file->name }}</td>
+                                        <td><span class="badge badge-warning">Menunggu</span></td>
+                                    @empty
+                                        <td colspan="3" class="text-center">Data File Tidak Ada...</td>                                     
+                                    </tr>
+                                @endforelse    
+                            @endif
                         </tbody>
                     </table>
                 </div>

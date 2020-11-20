@@ -85,8 +85,9 @@
         </div>
     </div>
 
-    <!-- Content Row -->
 
+    @if($role == 1)
+    <!-- Content Row -->
     <div class="row">
 
         <!-- Area Chart -->
@@ -103,20 +104,13 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                @if($role == 1)
                                 <th scope="col">Nama</th>
-                                @else
-                                <th scope="col">Nama Berkas</th>
-                                @endif
                                 <th scope="col">Status</th>
-
-                                @if($role == 1)
                                 <th scope="col">Aksi</th>
-                                @endif
                             </tr>
                         </thead>
                         <tbody>
-                            @if($role == 1)
+                            
                             <tr>
                                 <th scope="row">1</th>
                                 <td>Additya</td>
@@ -125,17 +119,6 @@
                                     <a type="button" href="{{ route('verify') }}" class="btn btn-info btn-circle"><i class="fas fa-eye"></i></a>
                                 </td>
                             </tr>
-                            @else
-                                @forelse ($files as $file)
-                                    <tr>
-                                        <th scope="row">{{$loop->iteration}}</th>
-                                        <td>{{ $file->name }}</td>
-                                        <td><span class="badge badge-warning">Belum Diverifikasi</span></td>
-                                    @empty
-                                        <td colspan="3" class="text-center">Data File Tidak Ada...</td>                                     
-                                    </tr>
-                                @endforelse    
-                            @endif
                         </tbody>
                     </table>
                 </div>
@@ -143,6 +126,168 @@
         </div>
 
     </div>
+    @else
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Area Chart -->
+        <div class="col-xl-12 col-md-12 col-lg-12">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Berkas SPM-LS Pihak Ke Tiga</h6>
+                </div>
+                <!-- Card Body -->
+
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nama Berkas</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($files as $file)
+                                @if($file->tipe == 'SPM-TIGA')
+                                    <tr>
+                                        <th scope="row">{{$loop->iteration}}</th>
+                                        <td>{{ $file->name }}</td>
+                                        <td><span class="badge badge-warning">Menunggu</span></td>                                                      
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+    {{-- end of row --}}
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Area Chart -->
+        <div class="col-xl-12 col-md-12 col-lg-12">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Berkas SPM-UP</h6>
+                </div>
+                <!-- Card Body -->
+
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nama Berkas</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($files as $file)
+                                @if($file->tipe == 'SPM-UP')
+                                    <tr>
+                                        <th scope="row">{{$loop->iteration}}</th>
+                                        <td>{{ $file->name }}</td>
+                                        <td><span class="badge badge-warning">Menunggu</span></td>                                                      
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+    {{-- end of row --}}
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Area Chart -->
+        <div class="col-xl-12 col-md-12 col-lg-12">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Berkas SPM-LS Bendahara</h6>
+                </div>
+                <!-- Card Body -->
+
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nama Berkas</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($files as $file)
+                                @if($file->tipe == 'SPM-Bendahara')
+                                    <tr>
+                                        <th scope="row">{{$loop->iteration}}</th>
+                                        <td>{{ $file->name }}</td>
+                                        <td><span class="badge badge-warning">Menunggu</span></td>                                                      
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+    {{-- end of row --}}
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Area Chart -->
+        <div class="col-xl-12 col-md-12 col-lg-12">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Berkas SPM Gaji Induk/Susulan/Terusan/Kekurangan</h6>
+                </div>
+                <!-- Card Body -->
+
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nama Berkas</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($files as $file)
+                                @if($file->tipe == 'SPM-Gaji')
+                                    <tr>
+                                        <th scope="row">{{$loop->iteration}}</th>
+                                        <td>{{ $file->name }}</td>
+                                        <td><span class="badge badge-warning">Menunggu</span></td>                                                      
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+    {{-- end of row --}}
+    
+    @endif
 
 </div>
 <!-- /.container-fluid -->

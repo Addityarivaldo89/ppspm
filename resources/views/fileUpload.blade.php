@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<?php $userid = Auth::user()->id?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -45,6 +46,7 @@
                         <div class="custom-file">
                             <input type="file" name="file" class="custom-file-input" id="berkas1" required>
                             <input type="hidden" name="tipe" value="SPM-TIGA">
+                            <input type="text" name="userid" value="<?php echo $userid; ?>">
                             <label class="custom-file-label" for="berkas1">Upload SPP/SPM</label>
                             <div class="invalid-feedback">(*.pdf/Max 5MB)</div>
                         </div>

@@ -40,24 +40,22 @@ class FileUploadController extends Controller
      */
     public function fileUploadPost(Request $request)
     {
-        $request->validate([
-            'file' => 'required|file|mimes:jpg,jpeg,bmp,png,doc,docx,csv,rtf,xlsx,xls,txt,pdf,zip',
-            'userid' => 'required',
-            'tipe' => 'required',
-        ]);
+        // $request->validate([
+        //     'file[]' => 'required|file|mimes:jpg,jpeg,bmp,png,doc,docx,csv,rtf,xlsx,xls,txt,pdf,zip',
+        //     'userid[]' => 'required',
+        //     'tipe[]' => 'required',
+        // ]);        
 
-        $fileName = $request->file->getClientOriginalName();
-        $userid = $request->userid;
-        $tipe = $request->tipe;
-        $request->file->move(public_path('file'), $fileName);
-
-        /* Store $fileName name in DATABASE from HERE */
-
-        File::create([
-            'name' => $fileName,
-            'userid' => $userid,
-            'tipe' => $tipe
-        ]);
+        for ($i = 0; $i < count($request->userid); $i++){
+            $fileName[$i] = $request->file[$i]->getClientOriginalName();
+            $data[] = [
+                'name' =>  $fileName[$i],
+                'userid' =>  $request->userid[$i],
+                'tipe' => $request->tipe[$i]
+            ];
+        }
+        //dd($data);
+        File::insert($data);
 
         return back()
             ->with('success', 'You have successfully file upload.')

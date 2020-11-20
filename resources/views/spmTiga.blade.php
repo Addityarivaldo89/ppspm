@@ -44,23 +44,23 @@
                     <form action="{{ route('file.upload.post') }}" method="POST" enctype="multipart/form-data" class="was-validated">
                         @csrf
                         <div class="custom-file">
-                            <input type="file" name="file" class="custom-file-input" id="berkas1" required>
-                            <input type="hidden" name="tipe" value="SPM-TIGA">
-                            <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+                            <input type="file" name="file[]" class="custom-file-input" id="berkas1" required>
+                            <input type="hidden" name="tipe[]" value="SPM-TIGA">
+                            <input type="hidden" name="userid[]" value="<?php echo $userid; ?>">
                             <label class="custom-file-label" for="berkas1">Upload SPP/SPM</label>
                             <div class="invalid-feedback">(*.pdf/Max 5MB)</div>
                         </div>
                         <div class="custom-file mt-3">
-                            <input type="file" class="custom-file-input" id="berkas2" required>
-                            <input type="hidden" name="tipe" value="SPM-TIGA">
-                            <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+                            <input type="file" name="file[]" class="custom-file-input" id="berkas2" required>
+                            <input type="hidden" name="tipe[]" value="SPM-TIGA">
+                            <input type="hidden" name="userid[]" value="<?php echo $userid; ?>">
                             <label class="custom-file-label" for="berkas2">Upload Kwitansi Yang Telah Disetujui PPK</label>
                             <div class="invalid-feedback">(*.pdf/Max 5MB)</div>
                         </div>
                         <div class="custom-file mt-3">
-                            <input type="file" class="custom-file-input" id="berkas3" required>
-                            <input type="hidden" name="tipe" value="SPM-TIGA">
-                            <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+                            <input type="file" name="file[]" class="custom-file-input" id="berkas3" required>
+                            <input type="hidden" name="tipe[]" value="SPM-TIGA">
+                            <input type="hidden" name="userid[]" value="<?php echo $userid; ?>">
                             <label class="custom-file-label" for="berkas3">Lampiran</label>
                             <div class="invalid-feedback">(*.zip/Max 10MB)</div>
                             <div class="invalid-feedback">(*Arsip Data Komputer(ADK); DRPP; SSP(Surat Setor Pajak); Faktur Pajak; Faktur Pembelian; Bukti Perjanjian/Kontrak; Referensi Bank dan No Rek Bank; Berita Acara Penyelesaian Pekerjaan; Berita Acara Serah Terima Pekerjaan/Barang; Berita Acara Pembayaran; Jaminan Bank; Surat Pernyataan Pengadaan Langsung)</div>

@@ -26,5 +26,8 @@ Route::get('create-data', [App\Http\Controllers\AuthorizationController::class, 
 Route::get('edit-data', [App\Http\Controllers\AuthorizationController::class, 'editData']);
 Route::get('update-data', [App\Http\Controllers\AuthorizationController::class, 'updateData']);
 Route::get('delete-data', [App\Http\Controllers\AuthorizationController::class, 'deleteData']);
-Route::get('file-upload', [App\Http\Controllers\FileUploadController::class, 'fileUpload' ])->name('file.upload');
+Route::get('spm-tiga', [App\Http\Controllers\FileUploadController::class, 'spmTiga' ])->name('spm.tiga');
+Route::get('spm-up', [App\Http\Controllers\FileUploadController::class, 'spmUp' ])->name('spm.up');
+Route::get('spm-bendahara', [App\Http\Controllers\FileUploadController::class, 'spmBendahara' ])->name('spm.bendahara');
+Route::get('spm-gaji', [App\Http\Controllers\FileUploadController::class, 'spmGaji' ])->name('spm.gaji');
 Route::post('file-upload', [App\Http\Controllers\FileUploadController::class, 'fileUploadPost' ])->name('file.upload.post');

@@ -62,7 +62,7 @@
                                 <!-- Sidebar - Brand -->
                                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
                                     <div class="sidebar-brand-icon">
-                                        <i class="fas fa-university"></i>
+                                        <img src="{{ ('img/logo.png') }}" class="img-fluid mx-auto d-block " style="width: 50%;">
                                     </div>
                                     <div class="sidebar-brand-text mx-2">e-Routing Slip</div>
                                 </a>
@@ -83,19 +83,19 @@
                                         <span>Form Verifikasi</span></a>
                                     @endif
                                     @if($role == 2)
-                                    <a class="nav-link" href="{{ route('file.upload') }}">
+                                    <a class="nav-link" href="{{ route('spm.tiga') }}">
                                         <i class="fas fa-fw fa-upload"></i>
                                         <span>Upload SPM-LS Pihak Ketiga</span></a>
 
-                                    <a class="nav-link" href="{{ route('file.upload') }}">
+                                    <a class="nav-link" href="{{ route('spm.up') }}">
                                         <i class="fas fa-fw fa-upload"></i>
                                         <span>Upload SPM-UP</span></a>
 
-                                    <a class="nav-link" href="{{ route('file.upload') }}">
+                                    <a class="nav-link" href="{{ route('spm.bendahara') }}">
                                         <i class="fas fa-fw fa-upload"></i>
                                         <span>Upload SPM-LS Bendahara</span></a>
 
-                                    <a class="nav-link" href="{{ route('file.upload') }}">
+                                    <a class="nav-link" href="{{ route('spm.gaji') }}">
                                         <i class="fas fa-fw fa-upload"></i>
                                         <span>Upload SPM Gaji Induk/Susulan/Terusan/Kekurangan</span></a>
                                     @endif

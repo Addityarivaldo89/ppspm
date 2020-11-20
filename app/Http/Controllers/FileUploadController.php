@@ -12,10 +12,24 @@ class FileUploadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function fileUpload()
-
+    public function spmTiga()
     {
-        return view('fileUpload');
+        return view('spmTiga');
+    }
+
+    public function spmUp()
+    {
+        return view('spmUp');
+    }
+
+    public function spmBendahara()
+    {
+        return view('spmBendahara');
+    }
+
+    public function spmGaji()
+    {
+        return view('spmGaji');
     }
 
 
@@ -28,10 +42,12 @@ class FileUploadController extends Controller
     {
         $request->validate([
             'file' => 'required|file|mimes:jpg,jpeg,bmp,png,doc,docx,csv,rtf,xlsx,xls,txt,pdf,zip',
+            'userid' => 'required',
             'tipe' => 'required',
         ]);
 
         $fileName = $request->file->getClientOriginalName();
+        $userid = $request->userid;
         $tipe = $request->tipe;
         $request->file->move(public_path('file'), $fileName);
 
@@ -39,6 +55,7 @@ class FileUploadController extends Controller
 
         File::create([
             'name' => $fileName,
+            'userid' => $userid,
             'tipe' => $tipe
         ]);
 

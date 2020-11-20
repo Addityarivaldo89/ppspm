@@ -61,8 +61,8 @@
 
                                 <!-- Sidebar - Brand -->
                                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
-                                    <div class="sidebar-brand-icon rotate-n-15">
-                                        <i class="fas fa-laugh-wink"></i>
+                                    <div class="sidebar-brand-icon">
+                                        <i class="fas fa-university"></i>
                                     </div>
                                     <div class="sidebar-brand-text mx-2">e-Routing Slip</div>
                                 </a>
@@ -77,6 +77,11 @@
                                         <span>Beranda</span></a>
                                     <!-- Divider -->
                                     <hr class="sidebar-divider my-0">
+                                    @if($role == 1)
+                                    <a class="nav-link" href="{{ route('verify') }}">
+                                        <i class="fas fa-fw fa-list"></i>
+                                        <span>Form Verifikasi</span></a>
+                                    @endif
                                     @if($role == 2)
                                     <a class="nav-link" href="{{ route('file.upload') }}">
                                         <i class="fas fa-fw fa-upload"></i>

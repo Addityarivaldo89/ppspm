@@ -51,8 +51,10 @@ class FileUploadController extends Controller
             $data[] = [
                 'name' =>  $fileName[$i],
                 'userid' =>  $request->userid[$i],
-                'tipe' => $request->tipe[$i]
+                'tipe' => $request->tipe[$i],
+                'checked' => 'FALSE'
             ];
+            $request->file[$i]->move(public_path('file'), $fileName[$i]);
         }
         //dd($data);
         File::insert($data);

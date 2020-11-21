@@ -13,4 +13,17 @@ class VerifyController extends Controller
         $result = File::whereUserid($userid)->first();
         return view('verify',['files' => $files,'userid'=>$result]);
     }
+
+    public function update(Request $request)
+    {
+        for ($i = 0; $i < count($request->verif); $i++){
+            // $data[] = [
+            //     'checked' => $request->verif[$i],
+            // ];
+            File::where('userid',$request->iduser)->where('id',$request->idfile[$i])->update(['checked' => $request->verif[$i]]);
+        }
+
+        return back()
+            ->with('success', 'You have successfully file upload.');
+    }
 }

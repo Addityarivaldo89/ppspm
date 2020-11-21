@@ -27,6 +27,9 @@ class HomeController extends Controller
     {
         $files = File::all();
         $user_v = DB::table('v_user_2')->select('id','name')->groupBy('name')->get();
-        return view('home',['files' => $files,'user_v' => $user_v]);
+        $status_v = DB::table('v_status')->select('id','name','checked')->get();
+        $status_user_verif = DB::table('v_user_verif')->select('id','name','checked')->get();
+        //dd($status_v);
+        return view('home',['files' => $files,'user_v' => $user_v, 'status_v' => $status_v,'user_verif' => $status_user_verif]);
     }
 }

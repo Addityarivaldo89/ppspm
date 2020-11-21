@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -22,6 +23,10 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                    <form class="was-validated" action="{{route('verify.checked',['userid2'=>$userid->userid])}}" method="POST">
+                    <input type="hidden" name="iduser" value="{{$userid->userid}}">
+                    @method('PUT')
+                    @csrf
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -35,23 +40,26 @@
                             @foreach ($files as $file)
                                 @if($file->userid == $userid->userid && $file->tipe == 'SPM-TIGA')
                                 <tr>
-                                    <th scope="row">{{$loop->iteration}}</th>
+                                    <th scope="row">{{$loop->iteration}}<input type="hidden" name="idfile[]" value="{{$file->id}}"></th>
                                     <td>{{$file->name}}</td>
                                     <td>
                                         <button class="btn btn-primary btn-circle btn-sm"><i
                                                 class="fas fa-download"></i></button>
                                     </td>
                                     <td>
-                                        <form class="was-validated">
-                                            <div class="custom-control custom-checkbox mb-3">
-                                                <input type="checkbox" class="custom-control-input"
-                                                    id="berkas1" required>
-                                                <label class="custom-control-label"
-                                                    for="berkas1">Verify</label>
-                                                <div class="invalid-feedback">Sudah Sesuai?
-                                                </div>
+                                        <div class="custom-control custom-checkbox mb-3">
+                                            @if($file->checked == "FALSE")
+                                                <input type="checkbox" name="verif[]" value="TRUE" class="custom-control-input"
+                                                    id="berkas<?php echo $loop->iteration?>" required>
+                                            @else
+                                                <input type="checkbox" name="verif[]" value="TRUE" class="custom-control-input"
+                                                    id="berkas<?php echo $loop->iteration?>" required checked>
+                                            @endif
+                                            <label class="custom-control-label"
+                                                for="berkas<?php echo $loop->iteration?>">Verify</label>
+                                            <div class="invalid-feedback">Sudah Sesuai?
                                             </div>
-                                        </form>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endif
@@ -59,9 +67,10 @@
                         </tbody>
                     </table>
                     <div class="row justify-content-end mr-auto">
-                        <a type="button" href="{{route('home')}}"
-                            class="btn btn-primary justify-content-end">Simpan</a>
+                        <button type="submit" 
+                            class="btn btn-primary justify-content-end">Simpan</button>
                     </div>
+                    </form>
                 </div>
             </div>
 
@@ -73,6 +82,10 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                    <form class="was-validated" action="{{route('verify.checked',['userid'=>$userid->userid])}}" method="POST">
+                    <input type="hidden" name="iduser" value="{{$userid->userid}}">
+                    @method('PUT')
+                    @csrf
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -86,23 +99,26 @@
                             @foreach ($files as $file)
                                 @if($file->userid == $userid->userid && $file->tipe == 'SPM-UP')
                                 <tr>
-                                    <th scope="row">{{$loop->iteration}}</th>
+                                    <th scope="row">{{$loop->iteration}}<input type="hidden" name="idfile[]" value="{{$file->id}}"></th>
                                     <td>{{$file->name}}</td>
                                     <td>
                                         <button class="btn btn-primary btn-circle btn-sm"><i
                                                 class="fas fa-download"></i></button>
                                     </td>
                                     <td>
-                                        <form class="was-validated">
-                                            <div class="custom-control custom-checkbox mb-3">
-                                                <input type="checkbox" class="custom-control-input"
-                                                    id="berkas1" required>
-                                                <label class="custom-control-label"
-                                                    for="berkas1">Verify</label>
-                                                <div class="invalid-feedback">Sudah Sesuai?
-                                                </div>
+                                        <div class="custom-control custom-checkbox mb-3">
+                                            @if($file->checked == "FALSE")
+                                                <input type="checkbox" name="verif[]" value="TRUE" class="custom-control-input"
+                                                    id="berkas<?php echo $loop->iteration?>" required>
+                                            @else
+                                                <input type="checkbox" name="verif[]" value="TRUE" class="custom-control-input"
+                                                    id="berkas<?php echo $loop->iteration?>" required checked>
+                                            @endif
+                                            <label class="custom-control-label"
+                                                for="berkas<?php echo $loop->iteration?>">Verify</label>
+                                            <div class="invalid-feedback">Sudah Sesuai?
                                             </div>
-                                        </form>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endif
@@ -110,9 +126,10 @@
                         </tbody>
                     </table>
                     <div class="row justify-content-end mr-auto">
-                        <a type="button" href="{{route('home')}}"
-                            class="btn btn-primary justify-content-end">Simpan</a>
+                        <button type="submit" 
+                            class="btn btn-primary justify-content-end">Simpan</button>
                     </div>
+                    </form>
                 </div>
             </div>
 
@@ -124,46 +141,54 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nama Berkas</th>
-                                <th scope="col">Lihat Berkas</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($files as $file)
-                                @if($file->userid == $userid->userid && $file->tipe == 'SPM-Bendahara')
+                    <form class="was-validated" action="{{route('verify.checked',['userid'=>$userid->userid])}}" method="POST">
+                    <input type="hidden" name="iduser" value="{{$userid->userid}}">
+                    @method('PUT')
+                    @csrf
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
-                                    <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$file->name}}</td>
-                                    <td>
-                                        <button class="btn btn-primary btn-circle btn-sm"><i
-                                                class="fas fa-download"></i></button>
-                                    </td>
-                                    <td>
-                                        <form class="was-validated">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nama Berkas</th>
+                                    <th scope="col">Lihat Berkas</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($files as $file)
+                                    @if($file->userid == $userid->userid && $file->tipe == 'SPM-Bendahara')
+                                    <tr>
+                                        <th scope="row">{{$loop->iteration}}<input type="hidden" name="idfile[]" value="{{$file->id}}"></th>
+                                        <td>{{$file->name}}</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-circle btn-sm"><i
+                                                    class="fas fa-download"></i></button>
+                                        </td>
+                                        <td>
                                             <div class="custom-control custom-checkbox mb-3">
-                                                <input type="checkbox" class="custom-control-input"
-                                                    id="berkas1" required>
+                                                @if($file->checked == "FALSE")
+                                                    <input type="checkbox" name="verif[]" value="TRUE" class="custom-control-input"
+                                                        id="berkas<?php echo $loop->iteration?>" required>
+                                                @else
+                                                    <input type="checkbox" name="verif[]" value="TRUE" class="custom-control-input"
+                                                        id="berkas<?php echo $loop->iteration?>" required checked>
+                                                @endif
                                                 <label class="custom-control-label"
-                                                    for="berkas1">Verify</label>
+                                                    for="berkas<?php echo $loop->iteration?>">Verify</label>
                                                 <div class="invalid-feedback">Sudah Sesuai?
                                                 </div>
                                             </div>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endif
-                            @endforeach
-                        </tbody>
-                    </table>
-                    <div class="row justify-content-end mr-auto">
-                        <a type="button" href="{{route('home')}}"
-                            class="btn btn-primary justify-content-end">Simpan</a>
-                    </div>
+                                        </td>
+                                    </tr>
+                                    @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="row justify-content-end mr-auto">
+                            <button type="submit" 
+                                class="btn btn-primary justify-content-end">Simpan</button>
+                        </div>
+                        </form>
                 </div>
             </div>
 
@@ -175,46 +200,54 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nama Berkas</th>
-                                <th scope="col">Lihat Berkas</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($files as $file)
-                                @if($file->userid == $userid->userid && $file->tipe == 'SPM-Gaji')
+                    <form class="was-validated" action="{{route('verify.checked',['userid'=>$userid->userid])}}" method="POST">
+                        <input type="hidden" name="iduser" value="{{$userid->userid}}">
+                        @method('PUT')
+                        @csrf
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
-                                    <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$file->name}}</td>
-                                    <td>
-                                        <button class="btn btn-primary btn-circle btn-sm"><i
-                                                class="fas fa-download"></i></button>
-                                    </td>
-                                    <td>
-                                        <form class="was-validated">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nama Berkas</th>
+                                    <th scope="col">Lihat Berkas</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($files as $file)
+                                    @if($file->userid == $userid->userid && $file->tipe == 'SPM-Gaji')
+                                    <tr>
+                                        <th scope="row">{{$loop->iteration}}<input type="hidden" name="idfile[]" value="{{$file->id}}"></th>
+                                        <td>{{$file->name}}</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-circle btn-sm"><i
+                                                    class="fas fa-download"></i></button>
+                                        </td>
+                                        <td>
                                             <div class="custom-control custom-checkbox mb-3">
-                                                <input type="checkbox" class="custom-control-input"
-                                                    id="berkas1" required>
+                                                @if($file->checked == "FALSE")
+                                                    <input type="checkbox" name="verif[]" value="TRUE" class="custom-control-input"
+                                                        id="berkas<?php echo $loop->iteration?>" required>
+                                                @else
+                                                    <input type="checkbox" name="verif[]" value="TRUE" class="custom-control-input"
+                                                        id="berkas<?php echo $loop->iteration?>" required checked>
+                                                @endif
                                                 <label class="custom-control-label"
-                                                    for="berkas1">Verify</label>
+                                                    for="berkas<?php echo $loop->iteration?>">Verify</label>
                                                 <div class="invalid-feedback">Sudah Sesuai?
                                                 </div>
                                             </div>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endif
-                            @endforeach
-                        </tbody>
-                    </table>
-                    <div class="row justify-content-end mr-auto">
-                        <a type="button" href="{{route('home')}}"
-                            class="btn btn-primary justify-content-end">Simpan</a>
-                    </div>
+                                        </td>
+                                    </tr>
+                                    @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="row justify-content-end mr-auto">
+                            <button type="submit" 
+                                class="btn btn-primary justify-content-end">Simpan</button>
+                        </div>
+                        </form>
                 </div>
             </div>
         </div>

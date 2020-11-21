@@ -1,5 +1,27 @@
 @extends('layouts.app')
-<?php $role = Auth::user()->role_id ?>
+
+<?php 
+$role = Auth::user()->role_id;
+$iduser = Auth::user()->id;
+$whereIndividu =  $status_v->where('checked','=','TRUE')->where('id','=',$iduser);
+$whereTotalberkas = $status_v->where('id','=',$iduser);
+$countTotalberkas = count($whereTotalberkas);
+$countIndividu = count($whereIndividu);
+$i=0;
+$u=0; 
+?>
+@foreach($user_v as $user_fetch)
+    <?php
+    $whereverif = $user_verif->where('checked','=','TRUE')->where('id','=',$user_fetch->id);
+    $countverif = count($whereverif);
+    //dd($countverif)
+    ?>
+    @if($countverif==12)
+        <?php $i = $i+1; ?>
+    @else 
+        <?php $u = $u+1; ?>
+    @endif
+@endforeach
 @section('content')
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -19,8 +41,21 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Terverifikasi</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                                @if($role == 1)
+                                    User Terverifikasi
+                                @else
+                                    Terverifikasi
+                                @endif
+                                
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                @if($role == 1)
+                                    {{$i}}
+                                @else
+                                    {{$countIndividu}}
+                                @endif
+
+                            </div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-check fa-2x text-gray-300"></i>
@@ -37,8 +72,14 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Belum Diverifikasi</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                Belum terverifikasi</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                @if($role==1)
+                                    {{$u}}
+                                @else
+                                    {{12-$countIndividu}}
+                                @endif
+                            </div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clock fa-2x text-gray-300"></i>
@@ -47,42 +88,27 @@
                 </div>
             </div>
         </div>
+        @if($role == 1)
 
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Sedang Diverifikasi</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-spinner fa-2x text-gray-300"></i>
+        @else
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-12 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Total Berkas</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$countTotalberkas}}<sub>/12</sub> </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-tasks fa-2x text-gray-300"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Pending Requests Card Example -->
-        <div class="col-xl-3 col-md-12 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Total Berkas</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">6 <sub>/12</sub> </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-tasks fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endif
     </div>
 
 
@@ -111,10 +137,20 @@
                         </thead>
                         <tbody>
                             @foreach($user_v as $user_fetch)
+                            <?php 
+                                $whereStat = $status_v->where('checked','=','TRUE')->where('id','=',$user_fetch->id);
+                                $countStat = count($whereStat);
+                            ?>
                             <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
                                 <td>{{$user_fetch->name}}</td>
-                                <td><span class="badge badge-warning">Belum Diverifikasi</span></td>
+                                <td>
+                                    @if($countStat<12)
+                                        <span class="badge badge-warning">Belum Diproses</span>
+                                    @else 
+                                        <span class="badge badge-success">Sudah Diproses</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="{{ route('verify',['userid' => $user_fetch->id])}}" class="btn btn-info btn-circle"><i class="fas fa-eye"></i></a>
                                 </td>
@@ -128,6 +164,7 @@
 
     </div>
     @else
+    <?php $no = 1; ?>
     <!-- Content Row -->
     <div class="row">
 
@@ -151,12 +188,19 @@
                         </thead>
                         <tbody>
                             @foreach ($files as $file)
-                                @if($file->tipe == 'SPM-TIGA')
+                                @if($file->userid == $iduser && $file->tipe == 'SPM-TIGA')
                                     <tr>
-                                        <th scope="row">{{$loop->iteration}}</th>
+                                        <th scope="row">{{$no}}</th>
                                         <td>{{ $file->name }}</td>
-                                        <td><span class="badge badge-warning">Menunggu</span></td>                                                      
+                                        <td>
+                                            @if($file->checked == "FALSE")
+                                                <span class="badge badge-warning">Menunggu</span>
+                                            @else
+                                                <span class="badge badge-success">Terverifikasi</span>
+                                            @endif
+                                        </td>                                                      
                                     </tr>
+                                    <?php $no++;?>
                                 @endif
                             @endforeach
                         </tbody>
@@ -191,11 +235,17 @@
                         </thead>
                         <tbody>
                             @foreach ($files as $file)
-                                @if($file->tipe == 'SPM-UP')
+                                @if($file->userid == $iduser && $file->tipe == 'SPM-UP')
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{ $file->name }}</td>
-                                        <td><span class="badge badge-warning">Menunggu</span></td>                                                      
+                                        <td>
+                                            @if($file->checked == "FALSE")
+                                                <span class="badge badge-warning">Menunggu</span>
+                                            @else
+                                                <span class="badge badge-success">Terverifikasi</span>
+                                            @endif
+                                        </td>                                                       
                                     </tr>
                                 @endif
                             @endforeach
@@ -231,11 +281,17 @@
                         </thead>
                         <tbody>
                             @foreach ($files as $file)
-                                @if($file->tipe == 'SPM-Bendahara')
+                                @if($file->userid == $iduser && $file->tipe == 'SPM-Bendahara')
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{ $file->name }}</td>
-                                        <td><span class="badge badge-warning">Menunggu</span></td>                                                      
+                                        <td>
+                                            @if($file->checked == "FALSE")
+                                                <span class="badge badge-warning">Menunggu</span>
+                                            @else
+                                                <span class="badge badge-success">Terverifikasi</span>
+                                            @endif
+                                        </td>                                                      
                                     </tr>
                                 @endif
                             @endforeach
@@ -271,11 +327,17 @@
                         </thead>
                         <tbody>
                             @foreach ($files as $file)
-                                @if($file->tipe == 'SPM-Gaji')
+                                @if($file->userid == $iduser && $file->tipe == 'SPM-Gaji')
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
                                         <td>{{ $file->name }}</td>
-                                        <td><span class="badge badge-warning">Menunggu</span></td>                                                      
+                                        <td>
+                                            @if($file->checked == "FALSE")
+                                                <span class="badge badge-warning">Menunggu</span>
+                                            @else
+                                                <span class="badge badge-success">Terverifikasi</span>
+                                            @endif
+                                        </td>                                                       
                                     </tr>
                                 @endif
                             @endforeach

@@ -18,6 +18,7 @@ class CreateFilesTable extends Migration
             $table->string('name');
             $table->integer('userid');
             $table->string('tipe');
+            $table->string('checked');
             $table->timestamps();
         });
     }

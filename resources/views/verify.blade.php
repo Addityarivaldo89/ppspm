@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -33,66 +32,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>SPP/SPM</td>
-                                <td>
-                                    <button class="btn btn-primary btn-circle btn-sm"><i
-                                            class="fas fa-download"></i></button>
-                                </td>
-                                <td>
-                                    <form class="was-validated">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="berkas1" required>
-                                            <label class="custom-control-label"
-                                                for="berkas1">Verify</label>
-                                            <div class="invalid-feedback">Sudah Sesuai?
+                            @foreach ($files as $file)
+                                @if($file->userid == $userid->userid && $file->tipe == 'SPM-TIGA')
+                                <tr>
+                                    <th scope="row">{{$loop->iteration}}</th>
+                                    <td>{{$file->name}}</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-circle btn-sm"><i
+                                                class="fas fa-download"></i></button>
+                                    </td>
+                                    <td>
+                                        <form class="was-validated">
+                                            <div class="custom-control custom-checkbox mb-3">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="berkas1" required>
+                                                <label class="custom-control-label"
+                                                    for="berkas1">Verify</label>
+                                                <div class="invalid-feedback">Sudah Sesuai?
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Kwitansi Yang Telah Disetujui PPK</td>
-                                <td>
-                                    <button class="btn btn-primary btn-circle btn-sm"><i
-                                            class="fas fa-download"></i></button>
-                                </td>
-                                <td>
-                                    <form class="was-validated">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="berkas2" required>
-                                            <label class="custom-control-label"
-                                                for="berkas2">Verify</label>
-                                            <div class="invalid-feedback">Sudah Sesuai?
-                                            </div>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Lampiran</td>
-                                <td>
-                                    <button class="btn btn-primary btn-circle btn-sm"><i
-                                            class="fas fa-download"></i></button>
-                                </td>
-                                <td>
-                                    <form class="was-validated">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="berkas3" required>
-                                            <label class="custom-control-label"
-                                                for="berkas3">Verify</label>
-                                            <div class="invalid-feedback">Sudah Sesuai?
-                                            </div>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endif
+                            @endforeach
                         </tbody>
                     </table>
                     <div class="row justify-content-end mr-auto">
@@ -120,66 +83,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>SPP/SPM</td>
-                                <td>
-                                    <button class="btn btn-primary btn-circle btn-sm"><i
-                                            class="fas fa-download"></i></button>
-                                </td>
-                                <td>
-                                    <form class="was-validated">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="berkas1" required>
-                                            <label class="custom-control-label"
-                                                for="berkas1">Verify</label>
-                                            <div class="invalid-feedback">Sudah Sesuai?
+                            @foreach ($files as $file)
+                                @if($file->userid == $userid->userid && $file->tipe == 'SPM-UP')
+                                <tr>
+                                    <th scope="row">{{$loop->iteration}}</th>
+                                    <td>{{$file->name}}</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-circle btn-sm"><i
+                                                class="fas fa-download"></i></button>
+                                    </td>
+                                    <td>
+                                        <form class="was-validated">
+                                            <div class="custom-control custom-checkbox mb-3">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="berkas1" required>
+                                                <label class="custom-control-label"
+                                                    for="berkas1">Verify</label>
+                                                <div class="invalid-feedback">Sudah Sesuai?
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>DRPP (Daftar Rincian Penerimaan Pembayaran)</td>
-                                <td>
-                                    <button class="btn btn-primary btn-circle btn-sm"><i
-                                            class="fas fa-download"></i></button>
-                                </td>
-                                <td>
-                                    <form class="was-validated">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="berkas2" required>
-                                            <label class="custom-control-label"
-                                                for="berkas2">Verify</label>
-                                            <div class="invalid-feedback">Sudah Sesuai?
-                                            </div>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Lampiran</td>
-                                <td>
-                                    <button class="btn btn-primary btn-circle btn-sm"><i
-                                            class="fas fa-download"></i></button>
-                                </td>
-                                <td>
-                                    <form class="was-validated">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="berkas3" required>
-                                            <label class="custom-control-label"
-                                                for="berkas3">Verify</label>
-                                            <div class="invalid-feedback">Sudah Sesuai?
-                                            </div>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endif
+                            @endforeach
                         </tbody>
                     </table>
                     <div class="row justify-content-end mr-auto">
@@ -207,66 +134,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>SPP/SPM</td>
-                                <td>
-                                    <button class="btn btn-primary btn-circle btn-sm"><i
-                                            class="fas fa-download"></i></button>
-                                </td>
-                                <td>
-                                    <form class="was-validated">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="berkas1" required>
-                                            <label class="custom-control-label"
-                                                for="berkas1">Verify</label>
-                                            <div class="invalid-feedback">Sudah Sesuai?
+                            @foreach ($files as $file)
+                                @if($file->userid == $userid->userid && $file->tipe == 'SPM-Bendahara')
+                                <tr>
+                                    <th scope="row">{{$loop->iteration}}</th>
+                                    <td>{{$file->name}}</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-circle btn-sm"><i
+                                                class="fas fa-download"></i></button>
+                                    </td>
+                                    <td>
+                                        <form class="was-validated">
+                                            <div class="custom-control custom-checkbox mb-3">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="berkas1" required>
+                                                <label class="custom-control-label"
+                                                    for="berkas1">Verify</label>
+                                                <div class="invalid-feedback">Sudah Sesuai?
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Kwitansi Yang Telah Disetujui PPK</td>
-                                <td>
-                                    <button class="btn btn-primary btn-circle btn-sm"><i
-                                            class="fas fa-download"></i></button>
-                                </td>
-                                <td>
-                                    <form class="was-validated">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="berkas2" required>
-                                            <label class="custom-control-label"
-                                                for="berkas2">Verify</label>
-                                            <div class="invalid-feedback">Sudah Sesuai?
-                                            </div>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Lampiran</td>
-                                <td>
-                                    <button class="btn btn-primary btn-circle btn-sm"><i
-                                            class="fas fa-download"></i></button>
-                                </td>
-                                <td>
-                                    <form class="was-validated">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="berkas3" required>
-                                            <label class="custom-control-label"
-                                                for="berkas3">Verify</label>
-                                            <div class="invalid-feedback">Sudah Sesuai?
-                                            </div>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endif
+                            @endforeach
                         </tbody>
                     </table>
                     <div class="row justify-content-end mr-auto">
@@ -294,66 +185,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>SPP/SPM</td>
-                                <td>
-                                    <button class="btn btn-primary btn-circle btn-sm"><i
-                                            class="fas fa-download"></i></button>
-                                </td>
-                                <td>
-                                    <form class="was-validated">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="berkas1" required>
-                                            <label class="custom-control-label"
-                                                for="berkas1">Verify</label>
-                                            <div class="invalid-feedback">Sudah Sesuai?
+                            @foreach ($files as $file)
+                                @if($file->userid == $userid->userid && $file->tipe == 'SPM-Gaji')
+                                <tr>
+                                    <th scope="row">{{$loop->iteration}}</th>
+                                    <td>{{$file->name}}</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-circle btn-sm"><i
+                                                class="fas fa-download"></i></button>
+                                    </td>
+                                    <td>
+                                        <form class="was-validated">
+                                            <div class="custom-control custom-checkbox mb-3">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="berkas1" required>
+                                                <label class="custom-control-label"
+                                                    for="berkas1">Verify</label>
+                                                <div class="invalid-feedback">Sudah Sesuai?
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Daftar Penghitungan Gaji Induk</td>
-                                <td>
-                                    <button class="btn btn-primary btn-circle btn-sm"><i
-                                            class="fas fa-download"></i></button>
-                                </td>
-                                <td>
-                                    <form class="was-validated">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="berkas2" required>
-                                            <label class="custom-control-label"
-                                                for="berkas2">Verify</label>
-                                            <div class="invalid-feedback">Sudah Sesuai?
-                                            </div>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Lampiran</td>
-                                <td>
-                                    <button class="btn btn-primary btn-circle btn-sm"><i
-                                            class="fas fa-download"></i></button>
-                                </td>
-                                <td>
-                                    <form class="was-validated">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                            <input type="checkbox" class="custom-control-input"
-                                                id="berkas3" required>
-                                            <label class="custom-control-label"
-                                                for="berkas3">Verify</label>
-                                            <div class="invalid-feedback">Sudah Sesuai?
-                                            </div>
-                                        </div>
-                                    </form>
-                                </td>
-                            </tr>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endif
+                            @endforeach
                         </tbody>
                     </table>
                     <div class="row justify-content-end mr-auto">

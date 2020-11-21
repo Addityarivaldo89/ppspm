@@ -110,15 +110,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            @foreach($user_v as $user_fetch)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Additya</td>
+                                <th scope="row">{{$loop->iteration}}</th>
+                                <td>{{$user_fetch->name}}</td>
                                 <td><span class="badge badge-warning">Belum Diverifikasi</span></td>
                                 <td>
-                                    <a type="button" href="{{ route('verify') }}" class="btn btn-info btn-circle"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('verify',['userid' => $user_fetch->id])}}" class="btn btn-info btn-circle"><i class="fas fa-eye"></i></a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

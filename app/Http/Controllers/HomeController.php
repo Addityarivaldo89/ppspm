@@ -26,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $files = File::all();
-        return view('home',['files' => $files]);
+        $user_v = DB::table('v_user_2')->select('id','name')->groupBy('name')->get();
+        return view('home',['files' => $files,'user_v' => $user_v]);
     }
 }

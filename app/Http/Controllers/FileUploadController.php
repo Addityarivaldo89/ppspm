@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\File;
+use Illuminate\Support\Facades\Storage;
 
 class FileUploadController extends Controller
 {
@@ -48,13 +49,14 @@ class FileUploadController extends Controller
 
         for ($i = 0; $i < count($request->userid); $i++){
             $fileName[$i] = $request->file[$i]->getClientOriginalName();
+            $path[$i] = $request->file[$i]->store('public/file/'. $fileName[$i]);
             $data[] = [
                 'name' =>  $fileName[$i],
                 'userid' =>  $request->userid[$i],
                 'tipe' => $request->tipe[$i],
+                'path' => $path[$i],
                 'checked' => 'FALSE'
             ];
-            $request->file[$i]->move(public_path('file'), $fileName[$i]);
         }
         //dd($data);
         File::insert($data);
@@ -62,6 +64,11 @@ class FileUploadController extends Controller
         return back()
             ->with('success', 'You have successfully file upload.')
             ->with('file', $fileName);
+    }
+    public function show($id)
+    {
+        $dl = File::find($id);
+        return Storage::download($dl->path, $dl->fileName);
     }
 
 }

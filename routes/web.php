@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('verify-view/{userid?}', [App\Http\Controllers\VerifyController::class, 'index'], function ($userid) {
     return view('verify', ['userid' => $userid]);
 })->name('verify');
@@ -36,3 +36,4 @@ Route::get('spm-up', [App\Http\Controllers\FileUploadController::class, 'spmUp' 
 Route::get('spm-bendahara', [App\Http\Controllers\FileUploadController::class, 'spmBendahara' ])->name('spm.bendahara');
 Route::get('spm-gaji', [App\Http\Controllers\FileUploadController::class, 'spmGaji' ])->name('spm.gaji');
 Route::post('file-upload', [App\Http\Controllers\FileUploadController::class, 'fileUploadPost' ])->name('file.upload.post');
+Route::get('/file/download/{id}', [App\Http\Controllers\FileUploadController::class, 'show' ])->name('download.file');

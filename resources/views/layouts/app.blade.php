@@ -62,7 +62,7 @@
                                 <!-- Sidebar - Brand -->
                                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
                                     <div class="sidebar-brand-icon">
-                                        <img src="{{ ('img/logo.png') }}" class="img-fluid mx-auto d-block " style="width: 50%;">
+                                        <img src="{{ ('/img/logo.png') }}" class="img-fluid mx-auto d-block " style="width: 50%;">
                                     </div>
                                     <div class="sidebar-brand-text mx-2">e-Routing Slip</div>
                                 </a>
@@ -77,11 +77,6 @@
                                         <span>Beranda</span></a>
                                     <!-- Divider -->
                                     <hr class="sidebar-divider my-0">
-                                    @if($role == 1)
-                                    <a class="nav-link" href="{{ route('verify') }}">
-                                        <i class="fas fa-fw fa-list"></i>
-                                        <span>Form Verifikasi</span></a>
-                                    @endif
                                     @if($role == 2)
                                     <a class="nav-link" href="{{ route('spm.tiga') }}">
                                         <i class="fas fa-fw fa-upload"></i>

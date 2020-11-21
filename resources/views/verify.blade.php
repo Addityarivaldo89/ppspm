@@ -42,8 +42,8 @@
                                     <th scope="row">{{$loop->iteration}}<input type="hidden" name="idfile[]" value="{{$file->id}}"></th>
                                     <td>{{$file->name}}</td>
                                     <td>
-                                        <a href="{{ route('download.file', $file->id) }}">
-                                            <button class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download"></i></button>
+                                        <a href="{{ route('download.file', $file->id) }}" class="btn btn-primary btn-circle btn-sm">
+                                            <i class="fas fa-download"></i>
                                         </a>
                                     </td>
                                     <td>
@@ -97,8 +97,8 @@
                                     <th scope="row">{{$loop->iteration}}<input type="hidden" name="idfile[]" value="{{$file->id}}"></th>
                                     <td>{{$file->name}}</td>
                                     <td>
-                                        <a href="{{ route('download.file', $file->id) }}">
-                                            <button class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download"></i></button>
+                                        <a href="{{ route('download.file', $file->id) }}" class="btn btn-primary btn-circle btn-sm">
+                                            <i class="fas fa-download"></i>
                                         </a>
                                     </td>
                                     <td>
@@ -152,8 +152,8 @@
                                     <th scope="row">{{$loop->iteration}}<input type="hidden" name="idfile[]" value="{{$file->id}}"></th>
                                     <td>{{$file->name}}</td>
                                     <td>
-                                        <a href="{{ route('download.file', $file->id) }}">
-                                            <button class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download"></i></button>
+                                        <a href="{{ route('download.file', $file->id) }}" class="btn btn-primary btn-circle btn-sm">
+                                            <i class="fas fa-download"></i>
                                         </a>
                                     </td>
                                     <td>
@@ -207,8 +207,8 @@
                                     <th scope="row">{{$loop->iteration}}<input type="hidden" name="idfile[]" value="{{$file->id}}"></th>
                                     <td>{{$file->name}}</td>
                                     <td>
-                                        <a href="{{ route('download.file', $file->id) }}">
-                                            <button class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download"></i></button>
+                                        <a href="{{ route('download.file', $file->id) }}" class="btn btn-primary btn-circle btn-sm">
+                                            <i class="fas fa-download"></i>
                                         </a>
                                     </td>
                                     <td>

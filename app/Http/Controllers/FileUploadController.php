@@ -49,7 +49,7 @@ class FileUploadController extends Controller
 
         for ($i = 0; $i < count($request->userid); $i++){
             $fileName[$i] = $request->file[$i]->getClientOriginalName();
-            $path[$i] = $request->file[$i]->store('public/file/'. $fileName[$i]);
+            $path[$i] = $request->file[$i]->store('public/file/');
             $data[] = [
                 'name' =>  $fileName[$i],
                 'userid' =>  $request->userid[$i],

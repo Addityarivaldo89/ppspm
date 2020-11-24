@@ -12,7 +12,9 @@
     <title>Formulir Penerimaan Berkas</title>
     <style>
         @media print {
-            #backButton, #printButton {
+
+            #backButton,
+            #printButton {
                 display: none;
             }
         }
@@ -27,7 +29,6 @@
         </h3>
         <a href="{{route('home')}}" class="btn btn-secondary btn-sm" id="backButton"><i class="fas fa-arrow-left"></i> Back</a>
         <a href="" class="btn btn-primary btn-sm" onclick="window.print();" id="printButton"><i class="fas fa-print"></i> Cetak</a>
-        <h6>Nama disini ya</h6>
         <table class="table container">
             <thead>
                 <tr>
@@ -59,7 +60,10 @@
                 <tr>
                     <th scope="row"><?php echo $no; ?></th>
                     <td>SPM-LS Pihak Ketiga</td>
-                    <td>Lampiran</td>
+                    <td>
+                        Lampiran
+                        <small class="form-text text-muted">*Arsip Data Komputer(ADK); DRPP; SSP(Surat Setor Pajak); Faktur Pajak; Faktur Pembelian; Bukti Perjanjian/Kontrak; Referensi Bank dan No Rek Bank; Berita Acara Penyelesaian Pekerjaan; Berita Acara Serah Terima Pekerjaan/Barang; Berita Acara Pembayaran; Jaminan Bank; Surat Pernyataan Pengadaan Langsung</small>
+                    </td>
                     <td>Terverifikasi</td>
                     <?php $no++; ?>
                 </tr>
@@ -95,7 +99,10 @@
                 <tr>
                     <th scope="row"><?php echo $no; ?></th>
                     <td>SPM-UP</td>
-                    <td>SPP/SPM</td>
+                    <td>
+                        Lampiran
+                        <small class="form-text text-muted">*Arsip Data Komputer(ADK); SPBy(Surat Perintah Bayar); SPP(Surat Setor Pajak); Kwitansi Yang Telah Disetujui PPK</small>
+                    </td>
                     <td>Terverifikasi</td>
                     <?php $no++; ?>
                 </tr>
@@ -113,7 +120,7 @@
                 </tr>
             </thead>
             <tbody>
-            <?php $no = 1 ?>
+                <?php $no = 1 ?>
                 <tr>
                     <th scope="row"><?php echo $no; ?></th>
                     <td>SPM-LS Bendahara</td>
@@ -131,7 +138,10 @@
                 <tr>
                     <th scope="row"><?php echo $no; ?></th>
                     <td>SPM-LS Bendahara</td>
-                    <td>SPP/SPM</td>
+                    <td>
+                        Lampiran
+                        <small class="form-text text-muted">*Arsip Data Komputer(ADK); DRPP; Daftar Nominatif; Rincian Pengeluaran; Pengeluaran Riil; Surat Perjalanan Dinas; Tiba Berangkat; Surat Tugas</small>
+                    </td>
                     <td>Terverifikasi</td>
                     <?php $no++; ?>
                 </tr>
@@ -149,7 +159,7 @@
                 </tr>
             </thead>
             <tbody>
-            <?php $no = 1 ?>
+                <?php $no = 1 ?>
                 <tr>
                     <th scope="row"><?php echo $no; ?></th>
                     <td>SPM Gaji Induk/Susulan/Terusan/Kekurangan</td>
@@ -167,7 +177,10 @@
                 <tr>
                     <th scope="row"><?php echo $no; ?></th>
                     <td>SPM Gaji Induk/Susulan/Terusan/Kekurangan</td>
-                    <td>SPP/SPM</td>
+                    <td>
+                        Lampiran
+                        <small class="form-text text-muted">*Lampiran-lampiran Perubahan Gaji Induk; Daftar Potongan Sewa Rumah Dinas Atau Hutang Lainnya Bila Ada; Daftar Penghitungan Kekurangan Gaji Induk; Lampiran-Lampiran Kekurangan Gaji Induk; Daftar Perhitungan Susulan Gaji Induk; SKPP Asli/Tembusan/Foto Copy; SK Pindah; Lampiran-Lampiran Susulan Gaji Lainnya(SK CPNS Dll); Daftar Perhitungan Pemecatan/Tewas; Surat Keterangan Meninggal Dunia; Surat Keterangan Ahli Waris; Blanko Visu,/Blanko KPS; SSP Yang Telah Diisi Dan Ditandatangani Pejabat Yang Berwenang</small>
+                    </td>
                     <td>Terverifikasi</td>
                     <?php $no++; ?>
                 </tr>

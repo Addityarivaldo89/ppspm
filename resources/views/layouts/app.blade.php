@@ -63,7 +63,7 @@
                                 <!-- Sidebar - Brand -->
                                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
                                     <div class="sidebar-brand-icon">
-                                        <img src="{{ ('/img/logo.png') }}" class="img-fluid mx-auto d-block " style="width: 50%;">
+                                        <img src="https://sugoidesign.my.id/img/logo.png" class="img-fluid mx-auto d-block " style="width: 50%;">
                                     </div>
                                     <div class="sidebar-brand-text mx-2">e-Routing Slip</div>
                                 </a>

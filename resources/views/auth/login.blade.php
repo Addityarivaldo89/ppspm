@@ -11,7 +11,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group col">
-                            <img src="{{ ('/img/logo.png') }}" class="img-fluid mx-auto d-block " style="width: 20%;">
+                            <img src="https://sugoidesign.my.id/img/logo.png" class="img-fluid mx-auto d-block " style="width: 20%;">
                         </div>
                         <div class="form-group col">
                             <div class="form-group row">

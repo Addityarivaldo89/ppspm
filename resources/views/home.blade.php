@@ -178,7 +178,7 @@ $countverif = count($whereverif);
                                 <td>
                                     @if($countStat<12) <span class="badge badge-warning">Belum Diproses</span>
                                         @else
-                                        <span class="badge badge-success">Sudah Diproses</span>
+                                        <span class="badge badge-success">Terverifikasi</span>
                                         @endif
                                 </td>
                                 <td>

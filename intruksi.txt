@@ -1,0 +1,29 @@
+Intruksi Pemakaian Website PPSPM
+
+-= Database: =-
+1. Buka Xampp
+2. Start Apache & MySql
+3. Buka localhost/phpmyadmin di browser
+3. Bikin database baru dengan nama "ppspm"
+4. Import ppspm.sql ke database yang baru dibuat tadi
+
+-= Aplikasinya: =-
+1. Buka Visual Studio Code
+2. Buka Terminal (ctrl + ~)
+3. Ketik : -php artisan migrate:fresh
+	   -php artisan db:seed
+4. Ketik "php artisan serve" untuk menjalankan serve laravel
+5. Klik link yang tersedia di terminal (http://127.0.0.1:8000) nanti langsung diarahkan ke websitenya
+
+-= Multiple access =-
+Ada 2 role : Admin & User
+Admin = PPSPM
+User = Staff staff keuangan (Bisa banyak staffnya)
+
+user&pw yang sudah tersedia
+1. email : ppspm@gmail.com
+   pw	 : admin
+2. email : staff1@gmail.com
+   pw	 : user
+3. email : staff2@gmail.com
+   pw	 : user

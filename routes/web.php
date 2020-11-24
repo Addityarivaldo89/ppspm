@@ -37,3 +37,4 @@ Route::get('spm-bendahara', [App\Http\Controllers\FileUploadController::class, '
 Route::get('spm-gaji', [App\Http\Controllers\FileUploadController::class, 'spmGaji' ])->name('spm.gaji');
 Route::post('file-upload', [App\Http\Controllers\FileUploadController::class, 'fileUploadPost' ])->name('file.upload.post');
 Route::get('/file/download/{id}', [App\Http\Controllers\FileUploadController::class, 'show' ])->name('download.file');
+Route::get('cetak', [App\Http\Controllers\VerifyController::class, 'cetak' ])->name('cetak');

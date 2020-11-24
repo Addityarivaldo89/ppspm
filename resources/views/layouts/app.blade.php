@@ -25,6 +25,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -193,7 +194,8 @@
 
                                 <!-- Page level custom scripts -->
                                 <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
-                                <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script> --}}
+                                <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
+                                --}}
 </body>
 
 </html>

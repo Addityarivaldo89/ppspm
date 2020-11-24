@@ -14,6 +14,11 @@ class VerifyController extends Controller
         return view('verify',['files' => $files,'userid'=>$result]);
     }
 
+    public function cetak()
+    {
+        return view('print');
+    }
+
     public function update(Request $request)
     {
         for ($i = 0; $i < count($request->verif); $i++){

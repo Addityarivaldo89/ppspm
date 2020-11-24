@@ -15,8 +15,11 @@
 
         <!-- Area Chart -->
         <div class="col-xl-12 col-lg-11">
+        <a class="btn btn-primary mb-3" href="{{route('cetak')}}"><i class="fas fa-print"></i> Cetak</a>
+
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
+                
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Berkas Verifikasi SPM-LS Pihak Ketiga</h6>
                 </div>
@@ -31,8 +34,8 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nama Berkas</th>
-                                    <th scope="col">Lihat Berkas</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col">Detail Berkas</th>
+                                    <th scope="col">Verifikasi</th>
                                 </tr>
                             </thead>
                             <tbody>

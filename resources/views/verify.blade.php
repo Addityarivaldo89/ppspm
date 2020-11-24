@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
-
+<?php
+    $whereIndividu =  $status_v->where('checked', '=', 'TRUE')->where('id', '=', $userid->userid);
+    $countIndividu = count($whereIndividu);
+?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -15,7 +18,8 @@
 
         <!-- Area Chart -->
         <div class="col-xl-12 col-lg-11">
-        <a class="btn btn-primary mb-3" href="{{route('cetak')}}"><i class="fas fa-print"></i> Cetak</a>
+        <iframe src="{{ route('cetak') }}" style="display:none;" name="frame"></iframe>
+        <a class="btn btn-primary mb-3" onclick="frames['frame'].print()" <?php if($countIndividu < 12){echo "hidden";} ?>><i class="fas fa-print"></i> Cetak</a>
 
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->

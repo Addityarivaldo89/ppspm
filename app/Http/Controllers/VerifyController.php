@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\File;
+use DB;
 
 class VerifyController extends Controller
 {
@@ -11,11 +12,13 @@ class VerifyController extends Controller
     {
         $files = File::all();
         $result = File::whereUserid($userid)->first();
-        return view('verify',['files' => $files,'userid'=>$result]);
+        $status_v = DB::table('v_status')->select('id','name','checked')->get();
+        return view('verify',['files' => $files,'userid'=>$result,'status_v'=>$status_v]);
     }
 
     public function cetak()
     {
+        //$user = File::find($userid);
         return view('print');
     }
 

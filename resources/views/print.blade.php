@@ -8,16 +8,26 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <title>Formulir Penerimaan Berkas</title>
+    <style>
+        @media print {
+            #backButton, #printButton {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
-<body onload="window.print();">
+<body>
     <div class="container-fluid">
         <h3 class="text-center my-5">
             CEKLIS PENERIMAAN BERKAS <br>
             OLEH PENGUJI SPP/SPM
         </h3>
+        <a href="{{route('home')}}" class="btn btn-secondary btn-sm" id="backButton"><i class="fas fa-arrow-left"></i> Back</a>
+        <a href="" class="btn btn-primary btn-sm" onclick="window.print();" id="printButton"><i class="fas fa-print"></i> Cetak</a>
+        <h6>Nama disini ya</h6>
         <table class="table container">
             <thead>
                 <tr>

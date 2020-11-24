@@ -12,7 +12,7 @@
     <title>Formulir Penerimaan Berkas</title>
 </head>
 
-<body>
+<body onload="window.print();">
     <div class="container-fluid">
         <h3 class="text-center my-5">
             CEKLIS PENERIMAAN BERKAS <br>
